@@ -138,26 +138,6 @@ public class CameraActivity extends Activity {
     private void dispatchTakePictureIntent(int actionCode) {
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        switch(actionCode) {
-            case ACTION_TAKE_PHOTO_B:
-                File f = null;
-
-                try {
-                    f = setUpPhotoFile();
-                    mCurrentPhotoPath = f.getAbsolutePath();
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    f = null;
-                    mCurrentPhotoPath = null;
-                }
-                break;
-
-            default:
-                break;
-        } // switch
-
         startActivityForResult(takePictureIntent, actionCode);
     }
 
